@@ -98,6 +98,7 @@ export class Widget extends BaseComponent{
         return body;
     }
 }
+
 export class NoChildWidget extends Widget{
     constructor({key, body, attrs = {}, template = (self,body) =>{}} = {}) {
         super({key:key, body:body, attrs:attrs});

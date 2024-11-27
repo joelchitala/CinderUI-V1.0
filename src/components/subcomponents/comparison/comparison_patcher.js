@@ -7,7 +7,6 @@ export const dom_patcher = (parent, component_1, component_2) =>{
             
             parent.data.body.appendChild(component_2.data.body)
         }else{
-            
             parent.data.body.replaceChild(
                 component_2.data.body, 
                 component_1.data.body
@@ -37,7 +36,6 @@ export const comparison_patcher = (comparison) =>{
             ...parent_data["attrs"],
             ...changes["attrs"],
         }
-
         
         parent.bind();
 
@@ -70,10 +68,8 @@ export const comparison_patcher = (comparison) =>{
                     nested_component_2
                 );
             }
-            
         }
 
-        
         if([
             COMPONENT_TYPES.multi_child_widget
         ].includes(parent_component_type)){
@@ -82,11 +78,16 @@ export const comparison_patcher = (comparison) =>{
         }
 
         if([
-            COMPONENT_TYPES.stateless_widget,
-            COMPONENT_TYPES.stateful_widget,
             COMPONENT_TYPES.single_child_widget,
         ].includes(parent_component_type)){
             parent_data["child"] = array[0];
+        }
+
+        if([
+            COMPONENT_TYPES.stateless_widget,
+            COMPONENT_TYPES.stateful_widget,
+        ].includes(parent_component_type)){
+            parent_data["widget"] = array[0];
         }
     }
 }
