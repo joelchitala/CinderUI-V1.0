@@ -187,6 +187,7 @@ export function replaceOrAppendNestedEntries({obj, replacements, append_mode = f
         }
       } else {
         // Replace or add the value directly
+
         if (append_mode) {
             obj[key] += value;
         }else{

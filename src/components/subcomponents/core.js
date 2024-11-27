@@ -123,6 +123,7 @@ export class MultiChildWidget extends Widget{
             template = (self,body,children) =>{}
         } = {}
     ){
+        
         super({key:key, body:body, attrs: attrs, template:(self,body) =>{
                 template(self,body,children)
             }

@@ -63,6 +63,8 @@ const areObjectsSimilarDeep = (obj1, obj2) =>{
 
 export const comparison_mapper = ({component_1, component_2}) =>{
     
+    
+
     const component_type = component_1.data["component_type"];
     
     switch (component_type) {
@@ -273,6 +275,21 @@ export const single_child_widget_comparison = ({component_1, component_2}) =>{
             if(entry_key == "data"){
                 const child_1 = comparison_dict["component_1"]["data"]["child"];
                 const child_2 = comparison_dict["component_2"]["data"]["child"];
+
+                if(!child_1 && !child_2){
+                    return;
+                }
+                
+                if(!child_1 && child_2){
+                    comparison_dict["nested_comparisons"] = [
+                        {
+                            rebuild_type: REBUILD_TYPES.full,
+                            changes: {},
+                            component_1: null,
+                            component_2: child_2,
+                        }
+                    ];
+                }
 
                 comparison_dict["nested_comparisons"] = [
                     comparison_mapper({
